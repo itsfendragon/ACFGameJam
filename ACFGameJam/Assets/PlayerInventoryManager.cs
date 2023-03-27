@@ -14,7 +14,7 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField]
     List<Sprite> spriteSprites;
 
-    Dictionary<string, Sprite> spriteBank;
+    Dictionary<string, Sprite> spriteBank = new Dictionary<string, Sprite>();
     [SerializeField]
     Color selectionTint;
 
@@ -55,7 +55,7 @@ public class PlayerInventoryManager : MonoBehaviour
         if (spriteSprites.Count < spritecount)
             spritecount = spriteSprites.Count;
 
-        spriteBank.Add("blank", null);
+        //spriteBank.Add("blank", null);
 
         for (int i = 0; i < spritecount; i++)
         {
@@ -65,6 +65,11 @@ public class PlayerInventoryManager : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            InventoryOpen = !InventoryOpen;
+        }
+
         UpdateView();
     }
 
@@ -125,7 +130,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public void UpdateView() 
     {
-        inventoryGUI.gameObject.SetActive(inventoryGUI);
+        inventoryGUI.gameObject.SetActive(InventoryOpen);
         if (inventoryGUI)
         {
             if (ShowIngedients)
