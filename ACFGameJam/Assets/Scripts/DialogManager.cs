@@ -33,7 +33,7 @@ public class DialogManager : MonoBehaviour
 
         Actor actorToDisplay = currentActors[messageToDisplay.actorId];
         actorName.text = actorToDisplay.name;
-        actorImage.sprite = actorToDisplay.sprite;
+        actorImage.sprite = messageToDisplay.sprite;
 
     }
 

@@ -30,18 +30,22 @@ public class Message
 {
     public int actorId;
     public string message;
+    public Sprite sprite;
 }
 
 public class Failure
 {
     public int actorId;
     public string failure;
+    public Sprite sprite;
+
 }
 
 public class Success
 {
     public int actorId;
     public string success;
+    public Sprite sprite;
 }
 
 
@@ -49,5 +53,5 @@ public class Success
 public class Actor
 {
     public string name;
-    public Sprite sprite;
+    //public Sprite sprite;
 }

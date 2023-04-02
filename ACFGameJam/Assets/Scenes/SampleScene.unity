@@ -989,18 +989,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c72c3f80fb93a48b14b0487023716f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messages:
+  message:
   - actorId: 0
-    message: Hi!
+    message: Test
+    sprite: {fileID: 21300000, guid: 3dca1b0235defe04cad57cf69cd42f31, type: 3}
   - actorId: 1
-    message: Hey!
-  - actorId: 0
-    message: This is a test.
+    message: Another one
+    sprite: {fileID: 21300000, guid: 2673e497bdb454145b87a9219659bc6b, type: 3}
+  failure: []
+  success: []
   actors:
   - name: Shronk
-    sprite: {fileID: 21300000, guid: 2673e497bdb454145b87a9219659bc6b, type: 3}
   - name: Fiona
-    sprite: {fileID: 21300000, guid: 3dca1b0235defe04cad57cf69cd42f31, type: 3}
 --- !u!114 &1278113275
 MonoBehaviour:
   m_ObjectHideFlags: 0
