@@ -9,6 +9,9 @@ public class PickupSlot : MonoBehaviour
     public InventoryItem Item;
     public int AmountStocked;
 
+    public bool infinite;
+    public bool DropOff;
+
     [SerializeField]
     float pickupRange;
     //E in a box
@@ -32,16 +35,41 @@ public class PickupSlot : MonoBehaviour
 
         //Handles display and pickup in the script
         //Make sure the marker is sorted in the layer to render above everything else
+        
         if(Vector3.Distance(pim.transform.position, transform.position) <= pickupRange)
         {
             pickupMarker.gameObject.SetActive(true);
 
 
-            if (AmountStocked > 0 && Input.GetKeyDown(KeyCode.E)) 
+            if (Input.GetKeyDown(KeyCode.E)) 
             {
-                if (Item.Type != InventoryItem.InventoryItemType.Dish)
-                    if(pim.AddIngredient(Item))
-                        AmountStocked--;
+                //PICK UP INGREDIENT, TAKE FROM STOCKPILE
+                if (!DropOff && AmountStocked > 0) 
+                {
+                    if (Item.Type != InventoryItem.InventoryItemType.Dish)
+                        if(pim.AddIngredient(Item))
+                            if(!infinite)
+                                AmountStocked--;
+                }
+                else if (DropOff && AmountStocked < 1)
+                {
+                    //DROP OFF DISH TO CUSTOMER
+                    if (pim.Dish.Name == Item.Name)
+                    {
+                        Item = pim.Dish;
+                        AmountStocked++;
+                    }
+                    //DROP OFF INGREDIENT TO STORAGE
+                    else
+                    {
+                        InventoryItem i = pim.GetIngredient(Item.Name);
+                        if (i.Name == Item.Name) 
+                        {
+                            Item = i;
+                            AmountStocked++;
+                        }
+                    }
+                }
 
             }
         }

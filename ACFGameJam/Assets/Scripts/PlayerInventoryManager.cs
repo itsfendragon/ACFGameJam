@@ -13,8 +13,17 @@ public class PlayerInventoryManager : MonoBehaviour
     List<string> spriteNames;
     [SerializeField]
     List<Sprite> spriteSprites;
-
+   
     Dictionary<string, Sprite> spriteBank = new Dictionary<string, Sprite>();
+
+    //Same reason here
+    [SerializeField]
+    List<string> RecipieString; //seperate by spaces
+    [SerializeField]
+    List<InventoryItem> result;
+    Dictionary<string, InventoryItem> recipies = new Dictionary<string, InventoryItem>();
+
+
     [SerializeField]
     Color selectionTint;
 
@@ -57,9 +66,13 @@ public class PlayerInventoryManager : MonoBehaviour
 
         //spriteBank.Add("blank", null);
 
-        for (int i = 0; i < spritecount; i++)
+        for (int i = 0; i < spriteNames.Count; i++)
         {
             spriteBank.Add(spriteNames[i], spriteSprites[i]);
+        }
+        for (int i = 0; i < RecipieString.Count; i++)
+        {
+            recipies.Add(RecipieString[i], result[i]);
         }
     }
 
@@ -157,6 +170,8 @@ public class PlayerInventoryManager : MonoBehaviour
 
             if (Dish.exists && ShowDish) 
             {
+
+
                 dishSlot.sprite = spriteBank[Dish.Name];
                 dishName.text = Dish.Name;
 
@@ -230,9 +245,63 @@ public class PlayerInventoryManager : MonoBehaviour
         }
         
     }
-    
 
 
+    public void ClearIngredient(int position)
+    {
+
+        if (IngredientSlots[position].exists)
+        {
+            IngredientSlots[position] = new InventoryItem();
+        }
+    }
+
+    public void ClearDish()
+    {
+        Dish = new InventoryItem();
+    }
+
+    public void Craft() 
+    {
+        List<string> gredients = new List<string>();
+        gredients.Add(IngredientSlots[0].Name);
+        gredients.Add(IngredientSlots[1].Name);
+        gredients.Add(IngredientSlots[2].Name);
+        int matches = 0;
+        string key = "";
+
+        Debug.Log(recipies.Count);
+
+        foreach(KeyValuePair<string, InventoryItem> entry in recipies) 
+        {
+            matches = 0;
+            string[] greds = entry.Key.Split(" ");
+            for (int i = 0; i < greds.Length; i++)
+            {
+                if (gredients.Contains(greds[i]))
+                    matches++;
+            }
+
+            Debug.Log("recipie matches " + matches + " ingredients");
+
+            if (matches == 3)
+            { 
+                key = entry.Key;
+                break;
+            }
+        }
+
+        if (key != "")
+        {
+            Dish = recipies[key];
+            for (int i = 0; i < IngredientSlots.Count; i++)
+            {
+                IngredientSlots[i] = new InventoryItem();
+            }
+        }
+
+
+    }
 }
 
 [System.Serializable]

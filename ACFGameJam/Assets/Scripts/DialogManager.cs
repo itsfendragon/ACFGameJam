@@ -16,6 +16,10 @@ public class DialogManager : MonoBehaviour
     int activeMessage = 0;
     public static bool isActive = false;
 
+    public float MesssageFlipDelay = 1;
+    public float MessageFlipCounter;
+
+
     public void OpenDialogue(Message[] messages, Actor[] actors) 
     {
         currentMessages = messages;
@@ -40,6 +44,7 @@ public class DialogManager : MonoBehaviour
     public void NextMessage()
     {
         activeMessage++;
+        MessageFlipCounter = MesssageFlipDelay;
         if (activeMessage < currentMessages.Length)
         {
             DisplayMessage();
@@ -54,8 +59,12 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isActive == true)
+        //Do not allow the message to change until the user could have read it.
+        if (MessageFlipCounter > 0)
+            MessageFlipCounter -= Time.deltaTime;
+        else if (Input.GetKeyDown(KeyCode.Space) && isActive == true)
         {
+            Debug.Log("goinf to next message");
             NextMessage();
         }
     }

@@ -9,6 +9,12 @@ public class NPCTalk : MonoBehaviour
     public GameObject canvas;
 
 
+    private void Awake()
+    {
+        canvas = GameObject.Find("Timeswitch").GetComponent<TimeSwitch>().diaCanvas.gameObject;
+
+    }
+
     private void Start()
     {
         canvas.SetActive(false); //canvas hidden when game starts
@@ -23,9 +29,12 @@ public class NPCTalk : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space)) //and the press the space bar 
                 {
-                    isInRange = false;
-                    canvas.SetActive(true); //the dialogue box will appear and the conversation will start
-                    trigger.StartDialogue();
+                    if (!trigger.Exhausted) //and the NPC has something left to say
+                    {
+                        isInRange = false;
+                        canvas.SetActive(true); //the dialogue box will appear and the conversation will start
+                        trigger.StartDialogue();
+                    }
                 }
             
             }
