@@ -10,6 +10,8 @@ public class SpacePopup : MonoBehaviour
     [SerializeField]
     float pickupRange;
 
+    public float currentRange;
+
     PlayerInventoryManager pim;
 
     SpriteRenderer sr;
@@ -25,6 +27,7 @@ public class SpacePopup : MonoBehaviour
     void Update()
     {
         //quickly just set this. no if needed
+        currentRange = Vector3.Distance(pim.transform.position, transform.position);
         sr.enabled = Vector3.Distance(pim.transform.position, transform.position) <= pickupRange;
 
     }

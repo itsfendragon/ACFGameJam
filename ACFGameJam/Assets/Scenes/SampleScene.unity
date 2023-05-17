@@ -1131,6 +1131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRange: 0
+  currentRange: 0
 --- !u!4 &207368781
 Transform:
   m_ObjectHideFlags: 0
@@ -6184,7 +6185,7 @@ MonoBehaviour:
   - Carmen
   - Kody
   - Junior
-  - Cocorde
+  - Concorde
   - Iggy
   EndCardGood: {fileID: 1325333914}
   EndCardBad: {fileID: 459032841}

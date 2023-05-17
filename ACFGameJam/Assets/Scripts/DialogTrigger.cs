@@ -34,33 +34,34 @@ public class DialogTrigger : MonoBehaviour
         if (Exhausted)
             return;
         //Need something that says if first time talking or something
-        if(Hello)
+        if (Hello)
         {
             Hello = false;
             FindObjectOfType<DialogManager>().OpenDialogue(message, actors);
         }
-        else if (pim.Dish.Name == "") 
+        else if (pim.Dish.exists)
         {
-            FindObjectOfType<DialogManager>().OpenDialogue(idle, actors);
+            //if the right dish is in the inventory
+            if (acceptableDishes.Contains(pim.Dish.Name))
+            {
+                Exhausted = true;
+                pim.Dish = new InventoryItem();
+                Debug.Log("timenames " + time.NPCFavours.Count);
+                time.NPCFavours[actors[1].name]++;
+                FindObjectOfType<DialogManager>().OpenDialogue(success, actors);
+                time.RegisterProgressTime();
+            }
+            //if the wrong dish is in the inventory
+            else
+            {
+                Exhausted = true;
+                pim.Dish = new InventoryItem();
+                FindObjectOfType<DialogManager>().OpenDialogue(failure, actors);
+                time.RegisterProgressTime();
+            } 
         }
-        //if the right dish is in the inventory
-        else if (acceptableDishes.Contains(pim.Dish.Name))
-        {
-            Exhausted = true;
-            pim.Dish = new InventoryItem();
-            Debug.Log("timenames " + time.NPCFavours.Count);
-            time.NPCFavours[actors[1].name]++; 
-            FindObjectOfType<DialogManager>().OpenDialogue(success, actors);
-            time.RegisterProgressTime();
-        }
-        //if the wrong dish is in the inventory
         else
-        {
-            Exhausted = true;
-            pim.Dish = new InventoryItem();
-            FindObjectOfType<DialogManager>().OpenDialogue(failure, actors);
-            time.RegisterProgressTime();
-        }
+            FindObjectOfType<DialogManager>().OpenDialogue(idle, actors);
     }
 }
 

@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class StartGameScript : MonoBehaviour
 {
+
+    public void LoadIntroScript()
+    {
+        SceneManager.LoadScene("IntroText");
+
+    }
+
     public void LoadLevelScript() 
     {
         SceneManager.LoadScene("SampleScene");
