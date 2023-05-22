@@ -37,6 +37,8 @@ public class PlayerInventoryManager : MonoBehaviour
     Transform CookTrigger;
     [SerializeField]
     float rangeCooking;
+    [SerializeField]
+    Transform NoCookTutorial;
 
     //force it to show up;
     bool cookingDevOverride;
@@ -158,7 +160,7 @@ public class PlayerInventoryManager : MonoBehaviour
     public void UpdateView() 
     {
         Cookbutton.gameObject.SetActive(CookingPossible || cookingDevOverride);
-
+        NoCookTutorial.gameObject.SetActive(!(CookingPossible || cookingDevOverride));
 
         inventoryGUI.gameObject.SetActive(InventoryOpen);
         if (inventoryGUI)
