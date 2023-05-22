@@ -9,6 +9,10 @@ public class CameraMount : MonoBehaviour
 
     public Transform player;
 
+    public Transform inside;
+
+    public bool indoorsCam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +22,18 @@ public class CameraMount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 newPos = player.position;
+        if (!indoorsCam)
+        {
+            Vector2 newPos = player.position;
 
-        float newx = Mathf.Clamp(newPos.x, furthestLeft, furthestRight);
-        float newy = Mathf.Clamp(newPos.y, furthestDown, furthestUp);
+            float newx = Mathf.Clamp(newPos.x, furthestLeft, furthestRight);
+            float newy = Mathf.Clamp(newPos.y, furthestDown, furthestUp);
 
-        transform.position = new Vector3(newx, newy, 0);
+            transform.position = new Vector3(newx, newy, 0);
+        }
+        else 
+        {
+            transform.position = inside.position;
+        }
     }
 }

@@ -632,8 +632,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -157.6863}
-  m_SizeDelta: {x: 1366.052, y: 610.2411}
+  m_AnchoredPosition: {x: -572, y: 354}
+  m_SizeDelta: {x: 689.897, y: 267.8842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1631907246
 MonoBehaviour:
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631907244}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -655,15 +655,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "It's finally here! After months of preparation, my caf\xE9 will finally
-    be open for business this Friday!\r\n\nIf I get three people to show up right
-    when doors open, I'm sure Shronk's Caf\xE9 will be the talk of the town.\r\nBut
-    I've been so busy perfecting my signature recipes that I've forgotten to introduce
-    myself to my new neighbors. How will I convince them to come to my grand opening?\r\n\n...\r\n\nOh,
-    I know! I'll win them over with some free samples!\r\nI'll need to figure out
-    their tastes so that I can give them a dish they'll really love. I should find
-    the freshest ingredients, too, I've got to impress them.\r\nWell, there's no
-    time to waste...let's get started!\r\n"
+  m_text: 'CONTROLS:
+
+    WASD - Move
+
+    ESC - Menu
+
+    TAB - Inventory
+
+    Spacebar
+    - Speak
+
+    E - Interact'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -839,14 +842,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1994995343}
         m_TargetAssemblyTypeName: StartGameScript, Assembly-CSharp
-        m_MethodName: LoadLevelScript
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SampleScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1994995345

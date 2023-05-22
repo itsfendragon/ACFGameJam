@@ -14,7 +14,7 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField]
     List<Sprite> spriteSprites;
    
-    Dictionary<string, Sprite> spriteBank = new Dictionary<string, Sprite>();
+    public Dictionary<string, Sprite> spriteBank = new Dictionary<string, Sprite>();
 
     //Same reason here
     [SerializeField]
@@ -26,6 +26,20 @@ public class PlayerInventoryManager : MonoBehaviour
 
     [SerializeField]
     Color selectionTint;
+
+
+
+    //Dictate When the cookbutton shows up
+    public bool CookingPossible;
+    [SerializeField]
+    Transform Cookbutton;
+    [SerializeField]
+    Transform CookTrigger;
+    [SerializeField]
+    float rangeCooking;
+
+    //force it to show up;
+    bool cookingDevOverride;
 
     public bool InventoryOpen;
     [SerializeField]
@@ -82,7 +96,7 @@ public class PlayerInventoryManager : MonoBehaviour
         {
             InventoryOpen = !InventoryOpen;
         }
-
+        CookingPossible = Vector3.Distance(transform.position, CookTrigger.position) < rangeCooking;
         UpdateView();
     }
 
@@ -143,6 +157,9 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public void UpdateView() 
     {
+        Cookbutton.gameObject.SetActive(CookingPossible || cookingDevOverride);
+
+
         inventoryGUI.gameObject.SetActive(InventoryOpen);
         if (inventoryGUI)
         {

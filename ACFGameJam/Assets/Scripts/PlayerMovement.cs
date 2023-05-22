@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     GameObject diaCanvas;
 
+    public float transportCooldown;
 
     public void Start()
     {
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (transportCooldown > 0)
+            transportCooldown -= Time.fixedDeltaTime;
         Move();
     }
 
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+
         if (diaCanvas.activeSelf) 
         {
             rb.velocity = Vector2.zero;
