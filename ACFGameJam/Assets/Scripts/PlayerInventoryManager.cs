@@ -160,7 +160,7 @@ public class PlayerInventoryManager : MonoBehaviour
     public void UpdateView() 
     {
         Cookbutton.gameObject.SetActive(CookingPossible || cookingDevOverride);
-        NoCookTutorial.gameObject.SetActive(!(CookingPossible || cookingDevOverride));
+        NoCookTutorial.gameObject.SetActive(!(CookingPossible || cookingDevOverride)); 
 
         inventoryGUI.gameObject.SetActive(InventoryOpen);
         if (inventoryGUI)

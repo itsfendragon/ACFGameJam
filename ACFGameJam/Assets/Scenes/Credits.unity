@@ -284,17 +284,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Credits
 
-    UI and Inventory Sprites - Link
+    UI and Pixel Sprites - KingxLink
 
-    Inventory programming,
-    level setup & Builds - Mattihase
+    Inventory Programming,
+    Level Setup & Builds - Mattihase
 
-    Character & Dialogue Programming - Ratskill
+    Character & Dialogue Programming, Script
+    - Ratskill
 
-    Character
-    and world art - Snickerblizz
-
-    Carpets - Bono'
+    Character & Level Design & Art - Snickerblizz'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

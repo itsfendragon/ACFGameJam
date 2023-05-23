@@ -6292,7 +6292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080924708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24, y: 2.68, z: -0.021707993}
+  m_LocalPosition: {x: -0.36, y: 19.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7276,8 +7276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diaCanvas: {fileID: 932174880}
-  homebase: {fileID: 0}
-  player: {fileID: 0}
+  homebase: {fileID: 1080924709}
+  player: {fileID: 484892822}
+  cam: {fileID: 830842966}
   Day: 0
   TimeOfDay: 1
   Background: {fileID: 1132680007}

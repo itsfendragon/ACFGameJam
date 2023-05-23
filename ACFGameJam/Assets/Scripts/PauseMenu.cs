@@ -123,11 +123,14 @@ public class PauseMenu : MonoBehaviour
                 panelPause.SetActive(!panelPause.activeSelf);
             }
         }
+        else
+            UnPause();
 
     }
 
     public void UnPause()
     {
+
 
         Time.timeScale = 1;
         // firstPersonController.enabled = true;

@@ -12,6 +12,7 @@ public class TimeSwitch : MonoBehaviour
 
     public Transform homebase;
     public Transform player;
+    public CameraMount cam;
 
     public int Day;
     public int TimeOfDay;
@@ -84,6 +85,9 @@ public class TimeSwitch : MonoBehaviour
             if(Day < days)
                 SpawnedNPCs = Instantiate(spawnNPCS[Day], Vector3.zero, Quaternion.identity) as Transform;
 
+            player.position = homebase.position;
+            cam.indoorsCam = true;
+
         }
         Background.sprite = BGs[TimeOfDay];
         Buildings.sprite = BDs[TimeOfDay];
@@ -137,7 +141,11 @@ public class TimeSwitch : MonoBehaviour
             {
                 visitTally += visitors[i] + ", ";
             }
-            visitTally += " and " + visitors[visitors.Count - 1] + " came to visit the grand opening, and it looks like they brought their friends along too! \n Score = " + score;
+            if(visitors.Count < 5)
+                visitTally += "and " + visitors[visitors.Count - 1] + " came to visit the grand opening, and it looks like they brought their friends along too! \n Score = " + score;
+            else
+                visitTally += "and " + visitors[visitors.Count - 1] + " all came to visit the grand opening! \n Score = " + score;
+
             if (score == visitors.Count * 2)
                 visitTally += "\n PERFECT!";
             EndCardGood.GetComponentInChildren<TextMeshProUGUI>().text = visitTally;
